@@ -12,4 +12,13 @@ router.get('/', async function(req, res, next) {
   }
 });
 
+router.post('/', async function(req, res, next){
+  try{
+    res.json(await orders.create(req.body))
+  }catch(err){
+    console.log(err)
+    next(err)
+  }
+});
+
 module.exports = router;
