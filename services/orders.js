@@ -18,7 +18,7 @@ async function getMultiple(page = 1){
 
 async function create(newProductData){
   const result = await db.query(
-    `INSERT INTO orders(customer_id, product_id, quantity, payment_id, order_date, admin_id) VALUES (${newProductData.customer_id}, ${newProductData.product_id}, ${newProductData.quantity}, ${newProductData.payment_id}, ${newProductData.order_date}, ${newProductData.admin_id})`
+    `INSERT INTO orders(customer_id, product_id, quantity, payment_id, order_date, admin_id) VALUES (${newProductData.customer_id}, ${newProductData.product_id}, ${newProductData.quantity}, ${newProductData.payment_id}, ${new Date().toISOString().slice(0, 19).replace('T', ' ')}, ${newProductData.admin_id})`
   );
   let message = "Error in creating new order"
   if (result.affectedRows) {
