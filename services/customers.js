@@ -18,9 +18,11 @@ async function getMultiple(page = 1){
 
 async function create(customerData){
   const result = db.query(
-    `INSERT INTO customers(customer_id, first_name, last_name, gender, birthdate, email_address, address_line_1, address_line_2, city, postal_code, password, mobile_number) VALUES (${customerData.customer_id}, "${customerData.first_name}", "${customerData.last_name}", "${customerData.gender}", "${customerData.birthdate}", "${customerData.email_address}", "${customerData.address_line_1}", "${customerData.address_line_2}", "${customerData.city}", ${customerData.postal_code}, "${customerData.password}", ${customerData.mobile_number})`
+    `INSERT INTO customers(customer_id, first_name, last_name, gender, birthdate, email_address, address_line_1, address_line_2, city, postal_code, password, mobile_number) 
+    VALUES (${customerData.customer_id}, "${customerData.first_name}", "${customerData.last_name}", "${customerData.gender}", "${customerData.birthdate}", "${customerData.email_address}", 
+    "${customerData.address_line_1}", "${customerData.address_line_2}", "${customerData.city}", ${customerData.postal_code}, "${customerData.password}", ${customerData.mobile_number})`
   )
-  let message = "Error in creating new customer"
+  let message = "Error in creating new customer on the services side"
   if (result.affectedRows) {
     message = 'New customer created successfully';
   }
